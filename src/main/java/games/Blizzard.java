@@ -22,7 +22,7 @@ public class Blizzard {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
         timer = new Timer();
 
-        gameDisplay.printMessage("\nYou've entered the teradome.");
+        gameDisplay.printMessage("\nYou've entered the Teradome.");
         gameDisplay.printMessage("Are you an Advanced, Novice, or Beginner.\nEnter 1 for Advanced: 2 for Novice: 3 for Beginner.");
 
         int selection = Integer.parseInt(gameConsole.playerInput());
@@ -42,4 +42,10 @@ public class Blizzard {
                 break;
         }
     }
+//    public void checkGameHealth(){
+//        if (currentPlayer.getName().getStats().getHealth() <= 0) {
+//            gameDisplay.printMessage("Your training was tested and you chi is strong, " + currentPlayer + ".\n" + "This Game is over!");
+//            alive = false;
+//        }
+//    }
 }

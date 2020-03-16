@@ -1,5 +1,7 @@
 package games;
 
+import com.sun.org.apache.xpath.internal.objects.XBoolean;
+import com.sun.org.apache.xpath.internal.objects.XBooleanStatic;
 import input.ConsoleManager;
 import models.characters.Enemy;
 import models.characters.Hero;
@@ -8,9 +10,9 @@ import models.utility.HeroWarehouse;
 import output.Display;
 
 public class ShaolimWarriorGame {
-    private static int enemyHealth = 100;
-    private static Enemy badGuy = new Enemy(12345L,"Bolo","lackey");
-    private static double enemyMoveChoice = Math.ceil(Math.random()*3);
+    private static int enemyHealth = 300;
+    private static Enemy badGuy = new Enemy(12345L, "Bolo", "lackey");
+    private static double enemyMoveChoice = Math.ceil(Math.random() * 3);
     private static String playerName;
     private static int playerHealth;
     private static boolean alive = false;
@@ -20,13 +22,14 @@ public class ShaolimWarriorGame {
     private static Hero currentPlayer;
 
 
-    private ShaolimWarriorGame(){}
+    private ShaolimWarriorGame() {
+    }
 
     /**
      * method for deaths in game
      */
 
-    public static void checkGameHealth(){
+    public static void checkGameHealth() {
         //playerHealth = currentPlayer.getStats().getHealth();
         if (enemyHealth <= 0) {
             gameDisplay.printMessage("Your training was tested and you chi is strong, " + playerName + " you have defeated " + badGuy.getName() + ".\n" + "This battle is over but there are more who must answer for your masters betrayal ");
@@ -44,14 +47,14 @@ public class ShaolimWarriorGame {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
         playerName = currentPlayer.getName();
         playerHealth = currentPlayer.getStats().getHealth();
-            gameDisplay.printMessage("There has been a travesty at the Shoalin monastery. \n" +
-                    "Your master Huang Zongxi has been found slain. \n" +
-                    "All signs show that it was the disciples of Wang Shichong. \n" +
-                    "You have traveled to Kāimíng to exact your revenge for the the honor of your master \n" +
-                    "You enter the enemies dojo. " + badGuy.getName() + " is knealing in meditation. \n" +
-                    "He raises his head. You lock eyes and he rises to fight you.");
+        gameDisplay.printMessage("There has been a travesty at the Shoalin monastery. \n" +
+                "Your master Huang Zongxi has been found slain. \n" +
+                "All signs show that it was the disciples of Wang Shichong. \n" +
+                "You have traveled to Kāimíng to exact your revenge for the the honor of your master \n" +
+                "You enter the enemies dojo. " + badGuy.getName() + " is knealing in meditation. \n" +
+                "He raises his head. You lock eyes and he rises to fight you.");
 
-            alive = true;
+        alive = true;
         while (alive) {
 
 
@@ -66,11 +69,11 @@ public class ShaolimWarriorGame {
             /**
              * switch statement takes the players choices a,b,c and
              * compares to random generated enemy choice should
-             * create six different occurrences of responses
+             * create nine different occurrences of responses
              */
 
             switch (playerFightChoice) {
-                case "a" :
+                case "a":
                     switch ((int) enemyChoice) {
                         case 1:
                             gameDisplay.printMessage(badGuy.getName() + " side steps your punch." + badGuy.getName() + " is faster than you thought");
@@ -88,7 +91,7 @@ public class ShaolimWarriorGame {
                             break;
                     }
                     break;
-                    //enemyChoice = Math.ceil(Math.random() * 3);
+                //enemyChoice = Math.ceil(Math.random() * 3);
                 case "b":
                     switch ((int) enemyChoice) {
                         case 1:
@@ -107,7 +110,7 @@ public class ShaolimWarriorGame {
                             break;
                     }
                     break;
-                   // enemyChoice = Math.ceil(Math.random() * 3);
+                // enemyChoice = Math.ceil(Math.random() * 3);
                 case "c":
                     switch ((int) enemyChoice) {
                         case 1:
@@ -124,15 +127,35 @@ public class ShaolimWarriorGame {
                             playerHealth -= 10;
                             checkGameHealth();
                             break;
-                default:
-                    gameDisplay.printMessage("PLEASE ENTER a, b, OR c");
-                    break;
+                        default:
+                            gameDisplay.printMessage("PLEASE ENTER a, b, OR c");
+                            break;
                     }
                     break;
-
+                
             }
 
+
+        }
+        alive = true;
+        /**
+         * If player survives first fight
+         * pick up item method
+         */
+        while (alive = true) {
+            gameDisplay.printMessage("There is a scroll on the ground. Do you want; a) to pick it up or b) go to the next room");
+
+            String playerFightChoice = gameConsole.playerInput();
+            if (playerFightChoice.equals("a")) {
+                gameDisplay.printMessage("It is a message from Wang Shichong. \n" +
+                        "It's a warning that retribution may be sought for the death of your master Huang. \n" +
+                        "They are aware that you might be coming. You must practice stealth!");
+            } else if (playerFightChoice.equals("b"))
+                gameDisplay.printMessage("You rush into a room full of soldiers. This choice might have been rash!");
+            break;
         }
     }
+
+
 
 }

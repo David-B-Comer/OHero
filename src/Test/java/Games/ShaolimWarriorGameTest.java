@@ -46,4 +46,7 @@ class ShaolimWarriorGameTest {
     void playerDecision() {
 
     }
+
+    @Test
+    void pickUpItem(){}
 }

@@ -132,12 +132,12 @@ public class ShaolimWarriorGame {
                             break;
                     }
                     break;
-                
+
             }
 
 
         }
-        alive = true;
+
         /**
          * If player survives first fight
          * pick up item method

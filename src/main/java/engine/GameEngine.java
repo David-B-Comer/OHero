@@ -2,6 +2,7 @@ package engine;
 
 import games.Blizzard;
 import games.NinjaTurtles;
+import games.ShaolimWarriorGame;
 import input.ConsoleManager;
 import models.characters.Hero;
 import models.utility.HeroWarehouse;
@@ -22,7 +23,7 @@ public class GameEngine {
 
     public void nameAndStoreHero() {
 
-        playerHero = new Hero(gameConsole.playerInput());
+        playerHero = new Hero(gameConsole.playerInput(), characterCollection);
         characterCollection.getCharacterModelStorage().add(playerHero);
         playerHero.setId((long) characterCollection.getCharacterModelStorage().indexOf(playerHero));
         //Something is up with this ID creation. What's wrong with it? Could you optimize it?
@@ -116,6 +117,7 @@ Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
                     break;
                 case "3":
                     gameDisplay.printMessage("Welcome to the dojo!");
+                    ShaolimWarriorGame.start(characterCollection);
                     break;
                 case "4":
                     gameDisplay.printMessage("Thank you have a nice day");

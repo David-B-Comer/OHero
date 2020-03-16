@@ -17,6 +17,7 @@ public class Blizzard {
     private static Timer timer;
     private static Integer playerHealth;
     private static Boolean alive = false;
+    private double enemyMoveChoice = Math.ceil(Math.random()*3);
 
     private Blizzard() {
     }

@@ -1,4 +1,4 @@
-package Games;
+package games;
 
 import models.items.Item;
 import output.Display;

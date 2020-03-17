@@ -15,11 +15,12 @@ public class ShaolimWarriorGame {
     private static double enemyMoveChoice = Math.ceil(Math.random() * 3);
     private static String playerName;
     private static int playerHealth;
-    private static boolean alive = false;
+    private static boolean alive = true;
     private static Display gameDisplay = new Display();
     private static Item scroll;
     private static ConsoleManager gameConsole = new ConsoleManager();
     private static Hero currentPlayer;
+    private static boolean inGame = true;
 
 
     private ShaolimWarriorGame() {
@@ -37,7 +38,10 @@ public class ShaolimWarriorGame {
         } else if (playerHealth <= 0) {
             gameDisplay.printMessage(playerName + " ,you have failed your master. " + badGuy.getName() + "'s chi was stronger. Master Huang betrayal will not be avenged by you.");
             alive = false;
+            gameOver();
+
         }
+
     }
 
     public static void start(HeroWarehouse characterCollection) {
@@ -56,6 +60,7 @@ public class ShaolimWarriorGame {
 
         alive = true;
         while (alive) {
+
 
 
             gameDisplay.printMessage(badGuy.getName() + " has " + enemyHealth + " health remaining.");
@@ -134,8 +139,6 @@ public class ShaolimWarriorGame {
                     break;
 
             }
-
-
         }
 
         /**
@@ -154,6 +157,9 @@ public class ShaolimWarriorGame {
                 gameDisplay.printMessage("You rush into a room full of soldiers. This choice might have been rash!");
             break;
         }
+    }
+    private static void gameOver(){
+        gameDisplay.printMessage("Game Over");
     }
 
 

@@ -28,6 +28,7 @@ public class ShaolimWarriorGame {
 
     /**
      * method for deaths in game
+     * added gameOver() to player condition to stop game
      */
 
     public static void checkGameHealth() {
@@ -59,7 +60,7 @@ public class ShaolimWarriorGame {
                 "He raises his head. You lock eyes and he rises to fight you.");
 
         alive = true;
-        while (alive) {
+        while (inGame) {
 
 
 
@@ -145,22 +146,27 @@ public class ShaolimWarriorGame {
          * If player survives first fight
          * pick up item method
          */
-        while (alive = true) {
+        while (inGame) {
             gameDisplay.printMessage("There is a scroll on the ground. Do you want; a) to pick it up or b) go to the next room");
 
             String playerFightChoice = gameConsole.playerInput();
             if (playerFightChoice.equals("a")) {
                 gameDisplay.printMessage("It is a message from Wang Shichong. \n" +
-                        "It's a warning that retribution may be sought for the death of your master Huang. \n" +
+                        "It's a warning to his clan that retribution may be sought for the death of your master Huang. \n" +
                         "They are aware that you might be coming. You must practice stealth!");
             } else if (playerFightChoice.equals("b"))
                 gameDisplay.printMessage("You rush into a room full of soldiers. This choice might have been rash!");
             break;
         }
-    }
+    }   /**
+        * made to stop game upon player death
+        * added to check health method
+        */
+
         private static void gameOver(){
             gameDisplay.printMessage("Game Over");
             System.exit(0);
+            inGame = false;
 
     }
 

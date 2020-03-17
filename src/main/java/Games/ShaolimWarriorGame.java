@@ -158,10 +158,15 @@ public class ShaolimWarriorGame {
             break;
         }
     }
-    private static void gameOver(){
-        gameDisplay.printMessage("Game Over");
+        private static void gameOver(){
+            gameDisplay.printMessage("Game Over");
+            System.exit(0);
+
     }
 
 
 
 }
+
+
+

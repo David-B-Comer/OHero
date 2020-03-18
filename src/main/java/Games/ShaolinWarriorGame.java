@@ -56,7 +56,7 @@ public class ShaolinWarriorGame {
                 "Your master Huang Zongxi has been found slain. \n" +
                 "All signs show that it was the disciples of Wang Shichong. \n" +
                 "You have traveled to Kāimíng to exact your revenge for the the honor of your master \n" +
-                "You enter the enemies dojo. " + badGuy.getName() + " is knealing in meditation. \n" +
+                "You enter the enemy's dojo. " + badGuy.getName() + " is knealing in meditation. \n" +
                 "He raises his head. You lock eyes and he rises to fight you.");
 
         alive = true;

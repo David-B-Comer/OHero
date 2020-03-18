@@ -13,6 +13,7 @@ public class GameEngine {
     private ConsoleManager gameConsole = new ConsoleManager();
     private HeroWarehouse characterCollection = new HeroWarehouse();
     private Hero playerHero;
+    private NinjaTurtles NinjaTurtlesGame = new NinjaTurtles();
 
 
     public void gameStart() {
@@ -74,14 +75,14 @@ Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
         if (yesOrNoCheck(gameConsole.playerInput())) {
             gameDisplay.printMessage("How inquisitive! Enjoy this +5 Intellect!");
-            characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntel(5);
+            characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntellect(5);
             gameDisplay.printCharacterStats(characterCollection.getCharacterModelStorage().get(0));
             gameDisplay.printMessage("...your bag is still empty though. It contains " +
                     characterCollection.getCharacterModelStorage().get(0).getHeroInventory().getItemStash().size() +
                     "\n items which is just sad. Nothing we can do about it though.");
         } else {
             gameDisplay.printMessage("Not very curious are you?");
-            characterCollection.getCharacterModelStorage().get(0).getStats().decreaseIntel(5);
+            characterCollection.getCharacterModelStorage().get(0).getStats().decreaseIntellect(5);
             gameDisplay.printMessage("Alright, we'll move on.");
         }
     }
@@ -109,7 +110,7 @@ Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
             switch (choice) {
                 case "1":
                     gameDisplay.printMessage("You are now in the sewer!");
-                    NinjaTurtles.start(characterCollection);
+                    NinjaTurtlesGame.start(characterCollection);
                     break;
                 case "2":
                     gameDisplay.printMessage("Look for cover, a blizzard is coming!");

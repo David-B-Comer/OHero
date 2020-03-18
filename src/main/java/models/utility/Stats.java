@@ -1,5 +1,7 @@
 package models.utility;
 
+import models.characters.Hero;
+
 public class Stats {
     private Integer dexterity;
     private Integer energy;
@@ -19,6 +21,8 @@ public class Stats {
 
     }
 
+
+    // Dexterity
     public Integer getDexterity() {
         return dexterity;
     }
@@ -27,6 +31,16 @@ public class Stats {
         this.dexterity = dexterity;
     }
 
+    public Integer increaseDexterity(Integer modifier){
+        return this.dexterity = this.dexterity + modifier;
+    }
+
+    public Integer decreaseDexterity(Integer modifier){
+        return this.dexterity = this.dexterity - modifier;
+    }
+
+
+// Energy
     public Integer getEnergy() {
         return energy;
     }
@@ -35,6 +49,16 @@ public class Stats {
         this.energy = energy;
     }
 
+    public Integer increaseEnergy(Integer modifier){
+        return this.energy = this.energy + modifier;
+    }
+
+    public Integer decreaseEnergy(Integer modifier){
+        return this.energy = this.energy - modifier;
+    }
+
+
+// Strength
     public Integer getStrength() {
         return strength;
     }
@@ -43,6 +67,16 @@ public class Stats {
         this.strength = strength;
     }
 
+    public Integer increaseStrength(Integer modifier){
+        return this.strength = this.strength + modifier;
+    }
+
+    public Integer decreaseStrength(Integer modifier){
+        return this.strength = this.strength - modifier;
+    }
+
+
+// Intellect
     public Integer getIntellect() {
         return intellect;
     }
@@ -51,14 +85,16 @@ public class Stats {
         this.intellect = intellect;
     }
 
-    public Integer increaseIntel(Integer modifier){
+    public Integer increaseIntellect(Integer modifier){
         return this.intellect = this.intellect + modifier;
     }
 
-    public Integer decreaseIntel(Integer modifier){
+    public Integer decreaseIntellect(Integer modifier){
         return this.intellect = this.intellect - modifier;
     }
 
+
+// Health
     public Integer getHealth() {
         return health;
     }
@@ -67,5 +103,12 @@ public class Stats {
         this.health = health;
     }
 
+    public Integer increaseHealth(Integer modifier){
+        return this.health = this.health + modifier;
+    }
+
+    public Integer decreaseHealth(Integer modifier){
+        return this.health = this.health - modifier;
+    }
 
 }

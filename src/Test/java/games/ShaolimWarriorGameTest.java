@@ -1,12 +1,6 @@
-package Games;
+package games;
 
-import models.characters.Hero;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import output.Display;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ShaolimWarriorGameTest {
 

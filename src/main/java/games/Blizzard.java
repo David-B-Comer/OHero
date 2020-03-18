@@ -17,7 +17,7 @@ public class Blizzard {
     private static Timer timer;
     private static Integer playerHealth;
     private static Boolean alive = false;
-    private double enemyMoveChoice = Math.ceil(Math.random() * 3);
+   // private double kiddieChoice = Math.ceil(Math.random() * 3);
 
     private Blizzard() {
     }
@@ -26,8 +26,8 @@ public class Blizzard {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
         timer = new Timer();
 
-        gameDisplay.printMessage("\nYou've entered the Teradome.");
-        gameDisplay.printMessage("Are you a Novice, Advanced, or Expert Challenger.\nEnter 1 for Novice : 2 for Advanced: 3 for Expert.");
+        gameDisplay.printMessage("\nYou've entered the Blizzard Ski Resort.");
+        gameDisplay.printMessage("Are you a Novice, Advanced, or Expert Challenger?\nEnter 1 for Novice : 2 for Advanced: 3 for Expert.");
 
         int selection = Integer.parseInt(gameConsole.playerInput());
 
@@ -38,7 +38,7 @@ public class Blizzard {
                 break;
             case 2:
                 gameDisplay.printMessage("You've chosen Advanced!");
-                blackDiamond(characterCollection);
+                //blackDiamond(characterCollection);
                 break;
             case 3:
                 gameDisplay.printMessage("You've chosen Expert!");
@@ -49,6 +49,7 @@ public class Blizzard {
                 break;
         }
     }
+
     public static void checkGameHealth() {
         playerHealth = currentPlayer.getStats().getHealth();
         if (playerHealth <= 0) {
@@ -56,88 +57,120 @@ public class Blizzard {
             alive = false;
         }
     }
+
     public static void bunnyHill(HeroWarehouse characterCollection) {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
-        gameDisplay.printMessage("\nThis must be your first time, watch out for the kiddies on the Bunny Hill " + currentPlayer.getName() + "! " + "\nTry to dodge the cones and make your way down to the finish line! " );
+        gameDisplay.printMessage("\nThis must be your first time, watch out for the kiddies on the Bunny Hill " + currentPlayer.getName() + "! " + "\nTry to dodge the kiddies and make your way down to the finish line! ");
+        gameDisplay.printMessage("R to Dodge Right: " + "L to Dodge Left:" + " SpaceBar to Jump:" + "   Don't Hurt'em! " + currentPlayer.getName());
+        // int selection = Integer.parseInt(gameConsole.playerInput());
+        // gameDisplay.printMessage("Are you a Novice, Advanced, or Expert Challenger.\nEnter 1 for Novice : 2 for Advanced: 3 for Expert.");
 
-        int selection = Integer.parseInt(gameConsole.playerInput());
-        gameDisplay.printMessage("Are you a Novice, Advanced, or Expert Challenger.\nEnter 1 for Novice : 2 for Advanced: 3 for Expert.");
 
-        switch (selection) {
-            case 1:
-                gameDisplay.printMessage(" finish line! ");
-                bunnyHill(characterCollection);
-                playerHealth = currentPlayer.getStats().getHealth();
-                break;
-            case 2:
-                gameDisplay.printMessage(" and peace!");
-                blackDiamond(characterCollection);
-                break;
-            case 3:
-                gameDisplay.printMessage("some bad guy butt!");
-                greatScott(characterCollection);
-                break;
-            default:
-                gameDisplay.printMessage("PLEASE ENTER 1, 2, OR 3");
-                break;
+        //int NoviceSelection = Integer.parseInt(gameConsole.playerInput());
 
+        String NoviceSelection = gameConsole.playerInput();
+        double kiddieChoice = Math.ceil(Math.random() * 3);
+        checkGameHealth();
+
+        switch (NoviceSelection) {
+            case "r":
+                switch ((int) kiddieChoice) {
+                    case 1:
+                        gameDisplay.printMessage(" HEY, WATCH IT! " + currentPlayer.getName());
+                        bunnyHill(characterCollection);
+                        playerHealth = currentPlayer.getStats().getHealth();
+                        checkGameHealth();
+                        break;
+                    case 2:
+                        gameDisplay.printMessage(" LOOK WHERE YOU'RE GOING!");
+                        // blackDiamond(characterCollection);
+                        playerHealth = currentPlayer.getStats().getHealth();
+                        checkGameHealth();
+                        break;
+                    case 3:
+                        gameDisplay.printMessage("OUCH! MOMMY!");
+                        // greatScott(characterCollection);
+                        playerHealth = currentPlayer.getStats().getHealth();
+                        checkGameHealth();
+                        break;
+                    default:
+                        gameDisplay.printMessage("PLEASE ENTER R, L, OR SPACEBAR");
+                        break;
+
+                }
+
+               // switch (NoviceSelection) {
+                    case "l":
+                        switch ((int) kiddieChoice) {
+                            case 1:
+                                gameDisplay.printMessage("SMASH! ");
+                                bunnyHill(characterCollection);
+                                playerHealth = currentPlayer.getStats().getHealth();
+                                checkGameHealth();
+                                break;
+                            case 2:
+                                gameDisplay.printMessage("CRUNCH!");
+                                //blackDiamond(characterCollection);
+                                playerHealth = currentPlayer.getStats().getHealth();
+                                checkGameHealth();
+                                break;
+                            case 3:
+                                gameDisplay.printMessage("CowaBunga!");
+                                // greatScott(characterCollection);
+                                playerHealth = currentPlayer.getStats().getHealth();
+                                checkGameHealth();
+                                break;
+                            default:
+                                gameDisplay.printMessage("PLEASE ENTER R, L, OR SPACEBAR");
+                                break;
+                        }
+                }
+                //
+//            switch (NoviceSelection) {
+//                    case "spacebar":
+//                case 1:
+//                    gameDisplay.printMessage("Try to dodge the cones and make your way down to the finish line! ");
+//                    bunnyHill(characterCollection);
+//                    playerHealth = currentPlayer.getStats().getHealth();
+//                    break;
+//                case 2:
+//                    gameDisplay.printMessage("My Master Yoshi's first rule was:  Possess the right thinking.  Only then can one receive the gifts of strength, knowledge, and peace!");
+//                    blackDiamond(characterCollection);
+//                    break;
+//                case 3:
+//                    gameDisplay.printMessage("Cowabunga Dudes! Lets kick some bad guy butt!");
+//                    greatScott(characterCollection);
+//                    break;
+//                default:
+//                    gameDisplay.printMessage("PLEASE ENTER 1, 2, OR 3");
+//                    break;
+//            }
+//
+//        }
+//    }
+
+                }
         }
-    }
-    private static void blackDiamond(HeroWarehouse characterCollection) {
 
-        currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
-        gameDisplay.printMessage("\nThis must be your first time, watch out for the kiddies on the Bunny Hill " + currentPlayer.getName() + "! ");
 
-        int selection = Integer.parseInt(gameConsole.playerInput());
 
-        switch (selection) {
-            case 1:
-                gameDisplay.printMessage("Try to dodge the cones and make your way down to the finish line! ");
-                bunnyHill(characterCollection);
-                playerHealth = currentPlayer.getStats().getHealth();
-                break;
-            case 2:
-                gameDisplay.printMessage("My Master Yoshi's first rule was:  Possess the right thinking.  Only then can one receive the gifts of strength, knowledge, and peace!");
-                blackDiamond(characterCollection);
-                break;
-            case 3:
-                gameDisplay.printMessage("Cowabunga Dudes! Lets kick some bad guy butt!");
-                greatScott(characterCollection);
-                break;
-            default:
-                gameDisplay.printMessage("PLEASE ENTER 1, 2, OR 3");
-                break;
-        }
-    }
+//    private static void blackDiamond (HeroWarehouse characterCollection){
+//
+//        currentPlayer = characterCollection.getCharacterModelStorage().get(0);
+//
+//        gameDisplay.printMessage("\nThis must be your first time, watch out for the kiddies on the Bunny Hill " + currentPlayer.getName() + "! ");
+//
+//        int selection = Integer.parseInt(gameConsole.playerInput());
 
-    private static void greatScott(HeroWarehouse characterCollection) {
-
-        currentPlayer = characterCollection.getCharacterModelStorage().get(0);
-
-        gameDisplay.printMessage("\nThis must be your first time, watch out for the kiddies on the Bunny Hill " + currentPlayer.getName() + "! ");
-
-        int selection = Integer.parseInt(gameConsole.playerInput());
-
-        switch (selection) {
-            case 1:
-                gameDisplay.printMessage("Try to dodge the cones and make your way down to the finish line! ");
-                bunnyHill(characterCollection);
-                playerHealth = currentPlayer.getStats().getHealth();
-                break;
-            case 2:
-                gameDisplay.printMessage("My Master Yoshi's first rule was:  Possess the right thinking.  Only then can one receive the gifts of strength, knowledge, and peace!");
-                blackDiamond(characterCollection);
-                break;
-            case 3:
-                gameDisplay.printMessage("Cowabunga Dudes! Lets kick some bad guy butt!");
-                greatScott(characterCollection);
-                break;
-            default:
-                gameDisplay.printMessage("PLEASE ENTER 1, 2, OR 3");
-                break;
-        }
-
-    }
-}
+//        }
+//        }
+//
+//        private static void greatScott (HeroWarehouse characterCollection){
+//
+//            currentPlayer = characterCollection.getCharacterModelStorage().get(0);
+//
+//            gameDisplay.printMessage("\nThis must be your first time, watch out for the kiddies on the Bunny Hill " + currentPlayer.getName() + "! ");
+//
+//            int selection = Integer.parseInt(gameConsole.playerInput());

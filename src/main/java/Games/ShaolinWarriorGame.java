@@ -9,8 +9,8 @@ import models.items.Item;
 import models.utility.HeroWarehouse;
 import output.Display;
 
-public class ShaolimWarriorGame {
-    private static int enemyHealth = 300;
+public class ShaolinWarriorGame {
+    private static int enemyHealth = 80;
     private static Enemy badGuy = new Enemy(12345L, "Bolo", "lackey");
     private static double enemyMoveChoice = Math.ceil(Math.random() * 3);
     private static String playerName;
@@ -23,7 +23,7 @@ public class ShaolimWarriorGame {
     private static boolean inGame = true;
 
 
-    private ShaolimWarriorGame() {
+    private ShaolinWarriorGame() {
     }
 
     /**
@@ -61,7 +61,6 @@ public class ShaolimWarriorGame {
 
         alive = true;
         while (inGame) {
-
 
 
             gameDisplay.printMessage(badGuy.getName() + " has " + enemyHealth + " health remaining.");
@@ -158,18 +157,19 @@ public class ShaolimWarriorGame {
                 gameDisplay.printMessage("You rush into a room full of soldiers. This choice might have been rash!");
             break;
         }
-    }   /**
-        * made to stop game upon player death
-        * added to check health method
-        */
-
-        private static void gameOver(){
-            gameDisplay.printMessage("Game Over");
-            System.exit(0);
-            inGame = false;
-
     }
 
+    /**
+     * made to stop game upon player death
+     * added to check health method
+     */
+
+    private static void gameOver() {
+        gameDisplay.printMessage("Game Over");
+        System.exit(0);
+        inGame = false;
+
+    }
 
 
 }

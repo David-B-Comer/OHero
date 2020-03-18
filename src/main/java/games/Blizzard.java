@@ -10,19 +10,19 @@ import java.util.Timer;
 
 public class Blizzard {
 
-    private static Display gameDisplay = new Display();
-    private static ConsoleManager gameConsole = new ConsoleManager();
-    private static Hero currentPlayer;
-    private static Enemy tree = new Enemy(100L, "BigGreen", "Tree");
-    private static Timer timer;
-    private static Integer playerHealth;
-    private static Boolean alive = false;
+    private Display gameDisplay = new Display();
+    private ConsoleManager gameConsole = new ConsoleManager();
+    private Hero currentPlayer;
+    private Enemy tree = new Enemy(100L, "BigGreen", "Tree");
+    private Timer timer;
+    private Integer playerHealth;
+    private Boolean alive = false;
    // private double kiddieChoice = Math.ceil(Math.random() * 3);
 
-    private Blizzard() {
+    public Blizzard() {
     }
 
-    public static void start(HeroWarehouse characterCollection) {
+    public void start(HeroWarehouse characterCollection) {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
         timer = new Timer();
 
@@ -50,7 +50,7 @@ public class Blizzard {
         }
     }
 
-    public static void checkGameHealth() {
+    public void checkGameHealth() {
         playerHealth = currentPlayer.getStats().getHealth();
         if (playerHealth <= 0) {
             gameDisplay.printMessage("Your Skiing skills were tested and you did not survive the BLIZZARD, " + currentPlayer + ".\n" + "This Game is over!");
@@ -58,7 +58,7 @@ public class Blizzard {
         }
     }
 
-    public static void bunnyHill(HeroWarehouse characterCollection) {
+    public void bunnyHill(HeroWarehouse characterCollection) {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
         gameDisplay.printMessage("\nThis must be your first time, watch out for the kiddies on the Bunny Hill " + currentPlayer.getName() + "! " + "\nTry to dodge the kiddies and make your way down to the finish line! ");
@@ -69,12 +69,12 @@ public class Blizzard {
 
         //int NoviceSelection = Integer.parseInt(gameConsole.playerInput());
 
-        String NoviceSelection = gameConsole.playerInput();
+        String noviceSelection = gameConsole.playerInput();
         double kiddieChoice = Math.ceil(Math.random() * 3);
         checkGameHealth();
 
-        switch (NoviceSelection) {
-            case "r":
+        switch (noviceSelection.toUpperCase()) {
+            case "R":
                 switch ((int) kiddieChoice) {
                     case 1:
                         gameDisplay.printMessage(" HEY, WATCH IT! " + currentPlayer.getName());
@@ -116,7 +116,7 @@ public class Blizzard {
                                 checkGameHealth();
                                 break;
                             case 3:
-                                gameDisplay.printMessage("CowaBunga!");
+                                gameDisplay.printMessage("Boink!");
                                 // greatScott(characterCollection);
                                 playerHealth = currentPlayer.getStats().getHealth();
                                 checkGameHealth();

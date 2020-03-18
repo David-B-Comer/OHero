@@ -13,7 +13,7 @@ public class GameEngine {
     private ConsoleManager gameConsole = new ConsoleManager();
     private HeroWarehouse characterCollection = new HeroWarehouse();
     private Hero playerHero;
-
+private Blizzard blizzardGame = new Blizzard();
 
     public void gameStart() {
         gameDisplay.printMessage("Welcome to OHero! This is a lazy demo for a game. \n" +
@@ -113,7 +113,7 @@ Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
                     break;
                 case "2":
                     gameDisplay.printMessage("Look for cover, a blizzard is coming!");
-                    Blizzard.start(characterCollection);
+                    blizzardGame.start(characterCollection);
                     break;
                 case "3":
                     gameDisplay.printMessage("Welcome to the dojo!");

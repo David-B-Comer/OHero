@@ -5,28 +5,27 @@ import models.characters.Enemy;
 import models.characters.Hero;
 import models.utility.HeroWarehouse;
 import output.Display;
-
 import java.util.Timer;
 
-public class Blizzard {
+public class Avalanche {
 
     private Display gameDisplay = new Display();
     private ConsoleManager gameConsole = new ConsoleManager();
     private Hero currentPlayer;
-    private Enemy tree = new Enemy(100L, "BigGreen", "Tree");
+   // private Enemy tree = new Enemy(100L, "BigGreen", "Tree");
     private Timer timer;
     private Integer playerHealth;
     private Boolean alive = false;
-   // private double kiddieChoice = Math.ceil(Math.random() * 3);
+    private double kiddieChoice = Math.ceil(Math.random() * 3);
 
-    public Blizzard() {
+    public Avalanche() {
     }
 
     public void start(HeroWarehouse characterCollection) {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
         timer = new Timer();
 
-        gameDisplay.printMessage("\nYou've entered the Blizzard Ski Resort.");
+        gameDisplay.printMessage("\nWelcome to Live or Die Ski Resort.");
         gameDisplay.printMessage("Are you a Novice, Advanced, or Expert Challenger?\nEnter 1 for Novice : 2 for Advanced: 3 for Expert.");
 
         int selection = Integer.parseInt(gameConsole.playerInput());
@@ -53,7 +52,7 @@ public class Blizzard {
     public void checkGameHealth() {
         playerHealth = currentPlayer.getStats().getHealth();
         if (playerHealth <= 0) {
-            gameDisplay.printMessage("Your Skiing skills were tested and you did not survive the BLIZZARD, " + currentPlayer + ".\n" + "This Game is over!");
+            gameDisplay.printMessage("Your Survival skills were tested and you did not survive the AVALANCHE!, " + currentPlayer + ".\n" + "This Game is over!");
             alive = false;
         }
     }
@@ -62,7 +61,7 @@ public class Blizzard {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
         gameDisplay.printMessage("\nThis must be your first time, watch out for the kiddies on the Bunny Hill " + currentPlayer.getName() + "! " + "\nTry to dodge the kiddies and make your way down to the finish line! ");
-        gameDisplay.printMessage("R to Dodge Right: " + "L to Dodge Left:" + " SpaceBar to Jump:" + "   Don't Hurt'em! " + currentPlayer.getName());
+        gameDisplay.printMessage("R to Dodge Right: " + "L to Dodge Left:" + " B to Jump:" + "   Don't Hurt'em! " + currentPlayer.getName());
         // int selection = Integer.parseInt(gameConsole.playerInput());
         // gameDisplay.printMessage("Are you a Novice, Advanced, or Expert Challenger.\nEnter 1 for Novice : 2 for Advanced: 3 for Expert.");
 
@@ -95,13 +94,13 @@ public class Blizzard {
                         checkGameHealth();
                         break;
                     default:
-                        gameDisplay.printMessage("PLEASE ENTER R, L, OR SPACEBAR");
+                        gameDisplay.printMessage("PLEASE ENTER R, L, OR B");
                         break;
 
                 }
 
                // switch (NoviceSelection) {
-                    case "l":
+                    case "L":
                         switch ((int) kiddieChoice) {
                             case 1:
                                 gameDisplay.printMessage("SMASH! ");
@@ -122,13 +121,13 @@ public class Blizzard {
                                 checkGameHealth();
                                 break;
                             default:
-                                gameDisplay.printMessage("PLEASE ENTER R, L, OR SPACEBAR");
+                                gameDisplay.printMessage("PLEASE ENTER R, L, OR B");
                                 break;
                         }
                 }
                 //
 //            switch (NoviceSelection) {
-//                    case "spacebar":
+//                    case "B":
 //                case 1:
 //                    gameDisplay.printMessage("Try to dodge the cones and make your way down to the finish line! ");
 //                    bunnyHill(characterCollection);

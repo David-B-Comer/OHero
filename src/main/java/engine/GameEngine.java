@@ -1,8 +1,8 @@
 package engine;
 
-import games.Blizzard;
+import games.Avalanche;
 import games.NinjaTurtles;
-import games.ShaolimWarriorGame;
+import games.ShaolimWarrior;
 import input.ConsoleManager;
 import models.characters.Hero;
 import models.utility.HeroWarehouse;
@@ -13,11 +13,13 @@ public class GameEngine {
     private ConsoleManager gameConsole = new ConsoleManager();
     private HeroWarehouse characterCollection = new HeroWarehouse();
     private Hero playerHero;
-private Blizzard blizzardGame = new Blizzard();
+    private Avalanche avalancheGame = new Avalanche();
+    private NinjaTurtles ninjaTurtlesGame = new NinjaTurtles();
+    private ShaolimWarrior shaolimWarriorGame = new ShaolimWarrior();
 
     public void gameStart() {
-        gameDisplay.printMessage("Welcome to OHero! This is a lazy demo for a game. \n" +
-                "...yours will surely be much better, cleaner, and more fun. \n" +
+        gameDisplay.printMessage("Welcome to OHero! \n" +
+                "...you will surely have a blast \n" +
                 "First, name yourself.");
     }
 
@@ -40,7 +42,7 @@ private Blizzard blizzardGame = new Blizzard();
     }
 
     public void startingStats() {
-Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
+    Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
         gameDisplay.printMessage("\n" + currentPlayer.getName() + "'s Stats are:");
 
@@ -58,7 +60,6 @@ Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
         characterCollection.getCharacterModelStorage().get(0).getStats().setHealth(100);
         gameDisplay.printMessage("Health = " + currentPlayer.getStats().getHealth());
-
 
         //That's a lot of repetitive code. Do this better!
         //You'll also note that arbitrary values can be input here - the player could make themselves impossibly strong!
@@ -86,20 +87,15 @@ Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
         }
     }
 
-
-
-
     private Boolean yesOrNoCheck(String yesOrNo){
         return yesOrNo.equalsIgnoreCase("yes");
     }
     // start here
-
-
     public void encounter() {
 
-        gameDisplay.printMessage("\nYou have three game choices! \n" +
+        gameDisplay.printMessage("\nYou have a library of three amazing game choices! \n" +
                 "1: Head to the sewers. \n" +
-                "2: Exit the building into the snow storm. \n" +
+                "2: Exit the building into a snow storm. \n" +
                 "3: Enter through the bamboo doorway into the Shaolin temple\n" +
                 "4: To EXIT.");
 
@@ -109,15 +105,15 @@ Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
             switch (choice) {
                 case "1":
                     gameDisplay.printMessage("You are now in the sewer!");
-                    NinjaTurtles.start(characterCollection);
+                    ninjaTurtlesGame.start(characterCollection);
                     break;
                 case "2":
-                    gameDisplay.printMessage("Look for cover, a blizzard is coming!");
-                    blizzardGame.start(characterCollection);
+                    gameDisplay.printMessage("Quick! Look for cover, a Avalanche is coming!");
+                    avalancheGame.start(characterCollection);
                     break;
                 case "3":
                     gameDisplay.printMessage("Welcome to the dojo!");
-                    ShaolimWarriorGame.start(characterCollection);
+                    shaolimWarriorGame.start(characterCollection);
                     break;
                 case "4":
                     gameDisplay.printMessage("Thank you have a nice day");

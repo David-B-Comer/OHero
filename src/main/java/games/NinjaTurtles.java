@@ -9,23 +9,23 @@ import output.Display;
 
 public class NinjaTurtles {
 
-    private static Display gameDisplay = new Display();
-    private static ConsoleManager gameConsole = new ConsoleManager();
-    private static Hero currentPlayer;
-    private static  int enemyHealth = 100;
-    private static Enemy footClan = new Enemy(1L, "Foot Clan Soldier", "Foot Clan Soldier");
-    private static double enemyMoveChoice = Math.ceil(Math.random()*3);
-    private static String playerName;
-    private static int playerHealth;
-    private static boolean alive = false;
+    private Display gameDisplay = new Display();
+    private ConsoleManager gameConsole = new ConsoleManager();
+    private Hero currentPlayer;
+    private int enemyHealth = 100;
+    private Enemy footClan = new Enemy(1L, "Foot Clan Soldier", "Foot Clan Soldier");
+    private double enemyMoveChoice = Math.ceil(Math.random()*3);
+    private String playerName;
+    private int playerHealth;
+    private boolean alive = false;
 //    private static int playerHealth = currentPlayer.getStats().getHealth();
 //    private static int playerEnergy = currentPlayer.getStats().getEnergy();
 
-    private NinjaTurtles() {
+    public NinjaTurtles() {
     }
 
 
-    public static void start(HeroWarehouse characterCollection) {
+    public void start(HeroWarehouse characterCollection) {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
 
@@ -53,7 +53,7 @@ public class NinjaTurtles {
         }
     }
 
-    public static void checkGameHealth() {
+    public void checkGameHealth() {
         if (enemyHealth <= 0) {
             gameDisplay.printMessage("You kicked some bad guy butt!");
             alive = false;
@@ -63,7 +63,7 @@ public class NinjaTurtles {
         }
     }
 
-    public static void eatPizza(HeroWarehouse characterCollection) {
+    public void eatPizza(HeroWarehouse characterCollection) {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
 
@@ -93,7 +93,7 @@ public class NinjaTurtles {
         }
     }
 
-    public static void trainWithSplinter(HeroWarehouse characterCollection) {
+    public void trainWithSplinter(HeroWarehouse characterCollection) {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
 
@@ -123,7 +123,7 @@ public class NinjaTurtles {
         }
     }
 
-    public static void fightFootClan(HeroWarehouse characterCollection) {
+    public void fightFootClan(HeroWarehouse characterCollection) {
             currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
 

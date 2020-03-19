@@ -7,26 +7,26 @@ import models.items.Item;
 import models.utility.HeroWarehouse;
 import output.Display;
 
-public class ShaolimWarriorGame {
-    private static int enemyHealth = 100;
-    private static Enemy badGuy = new Enemy(12345L,"Bolo","lackey");
-    private static double enemyMoveChoice = Math.ceil(Math.random()*3);
-    private static String playerName;
-    private static int playerHealth;
-    private static boolean alive = false;
-    private static Display gameDisplay = new Display();
-    private static Item scroll;
-    private static ConsoleManager gameConsole = new ConsoleManager();
-    private static Hero currentPlayer;
+public class ShaolimWarrior {
+    private int enemyHealth = 100;
+    private Enemy badGuy = new Enemy(12345L,"Bolo","lackey");
+    private double enemyMoveChoice = Math.ceil(Math.random()*3);
+    private String playerName;
+    private int playerHealth;
+    private boolean alive = false;
+    private Display gameDisplay = new Display();
+    private Item scroll;
+    private ConsoleManager gameConsole = new ConsoleManager();
+    private Hero currentPlayer;
 
 
-    private ShaolimWarriorGame(){}
+    public ShaolimWarrior(){}
 
     /**
      * method for deaths in game
      */
 
-    public static void checkGameHealth(){
+    public void checkGameHealth(){
         //playerHealth = currentPlayer.getStats().getHealth();
         if (enemyHealth <= 0) {
             gameDisplay.printMessage("Your training was tested and you chi is strong, " + playerName + " you have defeated " + badGuy.getName() + ".\n" + "This battle is over but there are more who must answer for your masters betrayal ");
@@ -37,7 +37,7 @@ public class ShaolimWarriorGame {
         }
     }
 
-    public static void start(HeroWarehouse characterCollection) {
+    public void start(HeroWarehouse characterCollection) {
         /**
          * games as on as long as player is alive
          */

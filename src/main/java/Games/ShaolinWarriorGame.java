@@ -10,20 +10,20 @@ import models.utility.HeroWarehouse;
 import output.Display;
 
 public class ShaolinWarriorGame {
-    private static int enemyHealth = 80;
-    private static Enemy badGuy = new Enemy(12345L, "Bolo", "lackey");
-    private static double enemyMoveChoice = Math.ceil(Math.random() * 3);
-    private static String playerName;
-    private static int playerHealth;
-    private static boolean alive = true;
-    private static Display gameDisplay = new Display();
-    private static Item scroll;
-    private static ConsoleManager gameConsole = new ConsoleManager();
-    private static Hero currentPlayer;
-    private static boolean inGame = true;
+    private int enemyHealth = 80;
+    private Enemy badGuy = new Enemy(12345L, "Bolo", "lackey");
+    private double enemyMoveChoice = Math.ceil(Math.random() * 3);
+    private String playerName;
+    private int playerHealth;
+    private boolean alive = true;
+    private Display gameDisplay = new Display();
+    private Item scroll;
+    private ConsoleManager gameConsole = new ConsoleManager();
+    private Hero currentPlayer;
+    private boolean inGame = true;
 
 
-    private ShaolinWarriorGame() {
+    public ShaolinWarriorGame() {
     }
 
     /**
@@ -31,7 +31,7 @@ public class ShaolinWarriorGame {
      * added gameOver() to player condition to stop game
      */
 
-    public static void checkGameHealth() {
+    public void checkGameHealth() {
         //playerHealth = currentPlayer.getStats().getHealth();
         if (enemyHealth <= 0) {
             gameDisplay.printMessage("Your training was tested and you chi is strong, " + playerName + " you have defeated " + badGuy.getName() + ".\n" + "This battle is over but there are more who must answer for your masters betrayal ");
@@ -45,7 +45,7 @@ public class ShaolinWarriorGame {
 
     }
 
-    public static void start(HeroWarehouse characterCollection) {
+    public void start(HeroWarehouse characterCollection) {
         /**
          * games as on as long as player is alive
          */
@@ -164,7 +164,7 @@ public class ShaolinWarriorGame {
      * added to check health method
      */
 
-    private static void gameOver() {
+    private void gameOver() {
         gameDisplay.printMessage("Game Over");
         System.exit(0);
         inGame = false;

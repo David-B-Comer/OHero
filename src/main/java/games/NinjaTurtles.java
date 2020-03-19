@@ -22,41 +22,15 @@ public class NinjaTurtles {
     private int playerIntellect;
     private int playerEnergy;
 
+
+
+
 //    private int playerHealth = currentPlayer.getStats().getHealth();
 //    private int playerEnergy = currentPlayer.getStats().getEnergy();
 
     public NinjaTurtles() {
     }
 
-
-
-    public void start(HeroWarehouse characterCollection) {
-        currentPlayer = characterCollection.getCharacterModelStorage().get(0);
-
-
-        gameDisplay.printMessage("\nHeroes in a half shell. Turtle Power!");
-        gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
-
-        int selection = Integer.parseInt(gameConsole.playerInput());
-
-        switch (selection) {
-            case 1:
-                gameDisplay.printMessage("Wise men say, 'forgiveness is divine, but never pay full price for late pizza'! ");
-                eatPizza(characterCollection);
-                break;
-            case 2:
-                gameDisplay.printMessage("My Master Yoshi's first rule was:  Possess the right thinking.  Only then can one receive the gifts of strength, knowledge, and peace!");
-                trainWithSplinter(characterCollection);
-                break;
-            case 3:
-                gameDisplay.printMessage("Cowabunga Dudes! Lets kick some bad guy butt!");
-                fightFootClan(characterCollection);
-                break;
-            default:
-                gameDisplay.printMessage("PLEASE ENTER 1, 2, OR 3");
-                break;
-        }
-    }
 
     public void checkGameHealth() {
         if (enemyHealth <= 0) {
@@ -68,44 +42,42 @@ public class NinjaTurtles {
         }
     }
 
-    public void eatPizza(HeroWarehouse characterCollection) {
-        currentPlayer = characterCollection.getCharacterModelStorage().get(0);
+    public void start(HeroWarehouse characterCollection) {
 
+        gameDisplay.printMessage("\nHeroes in a half shell. Turtle Power!");
+        gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
+        turtlesChoices(characterCollection);
+    }
+
+    public void eatPizza(HeroWarehouse characterCollection) {
 
         gameDisplay.printMessage("\nThat pizza hit the spot! Health and energy increased to " + playerHealth + " "+ playerEnergy );
         gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat more pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
-
-        int selection = Integer.parseInt(gameConsole.playerInput());
-
-        switch (selection) {
-            case 1:
-                gameDisplay.printMessage("Wise men say, 'forgiveness is divine, but never pay full price for late pizza'! ");
-                eatPizza(characterCollection);
-                characterCollection.getCharacterModelStorage().get(0).getStats().increaseHealth(5);
-                playerHealth = characterCollection.getCharacterModelStorage().get(0).getStats().getHealth();
-                break;
-            case 2:
-                gameDisplay.printMessage("My Master Yoshi's first rule was:  Possess the right thinking.  Only then can one receive the gifts of strength, knowledge, and peace!");
-                trainWithSplinter(characterCollection);
-                break;
-            case 3:
-                gameDisplay.printMessage("Cowabunga Dudes! Lets kick some bad guy butt!");
-                fightFootClan(characterCollection);
-                break;
-            default:
-                gameDisplay.printMessage("PLEASE ENTER 1, 2, OR 3");
-                break;
-
-        }
+        turtlesChoices(characterCollection);
     }
 
     public void trainWithSplinter(HeroWarehouse characterCollection) {
-        currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
         characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntellect(5);
         characterCollection.getCharacterModelStorage().get(0).getStats().increaseDexterity(5);
         gameDisplay.printMessage("\nYou have chosen wisely young turtle dexterity and intellect have been improved. Intellect increased to ");
         gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat more pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
+        turtlesChoices(characterCollection);
+    }
+
+
+
+    public void fightFootClan(HeroWarehouse characterCollection) {
+
+        gameDisplay.printMessage("\nYou have chosen wisely young turtle dexterity and intellect have been increased. Intellect increased to ");
+        gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat more pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
+        turtlesChoices(characterCollection);
+
+    }
+
+    public void turtlesChoices(HeroWarehouse characterCollection) {
+
+        currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
         int selection = Integer.parseInt(gameConsole.playerInput());
 
@@ -126,41 +98,6 @@ public class NinjaTurtles {
             default:
                 gameDisplay.printMessage("PLEASE ENTER 1, 2, OR 3");
                 break;
-
         }
     }
-
-
-
-    public void fightFootClan(HeroWarehouse characterCollection) {
-            currentPlayer = characterCollection.getCharacterModelStorage().get(0);
-
-
-            gameDisplay.printMessage("\nYou have chosen wisely young turtle dexterity and intellect have been increased. Intellect increased to ");
-            gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat more pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
-
-            int selection = Integer.parseInt(gameConsole.playerInput());
-
-            switch (selection) {
-                case 1:
-                    gameDisplay.printMessage("Wise men say, 'forgiveness is divine, but never pay full price for late pizza'! ");
-                    eatPizza(characterCollection);
-                    playerHealth = currentPlayer.getStats().getHealth();
-                    break;
-                case 2:
-                    gameDisplay.printMessage("My Master Yoshi's first rule was:  Possess the right thinking.  Only then can one receive the gifts of strength, knowledge, and peace!");
-                    trainWithSplinter(characterCollection);
-                    break;
-                case 3:
-                    gameDisplay.printMessage("Cowabunga Dudes! Lets kick some bad guy butt!");
-                    fightFootClan(characterCollection);
-                    break;
-                default:
-                    gameDisplay.printMessage("PLEASE ENTER 1, 2, OR 3");
-                    break;
-
-            }
-
-    }
 }
-

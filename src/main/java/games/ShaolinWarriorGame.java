@@ -7,7 +7,7 @@ import models.items.Item;
 import models.utility.HeroWarehouse;
 import output.Display;
 
-public class ShaolimWarriorGame {
+public class ShaolinWarriorGame {
     private static int enemyHealth = 100;
     private static Enemy badGuy = new Enemy(12345L,"Bolo","lackey");
     private static double enemyMoveChoice = Math.ceil(Math.random()*3);
@@ -20,7 +20,7 @@ public class ShaolimWarriorGame {
     private static Hero currentPlayer;
 
 
-    private ShaolimWarriorGame(){}
+    private ShaolinWarriorGame(){}
 
     /**
      * method for deaths in game

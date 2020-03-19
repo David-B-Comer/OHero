@@ -2,7 +2,7 @@ package games;
 
 import org.junit.jupiter.api.Test;
 
-class ShaolimWarriorGameTest {
+class ShaolinWarriorGameTest {
 
 
     private static int enemyHealth = 100;
@@ -18,7 +18,7 @@ class ShaolimWarriorGameTest {
 
         if(enemyHealth <= 0)
             alive = false;
-        else if (ShaolimWarriorGameTest.playerHealth <= 0)
+        else if (ShaolinWarriorGameTest.playerHealth <= 0)
             alive = false;
 
         checkGameHealth(playerHealth);

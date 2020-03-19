@@ -1,11 +1,9 @@
-package Games;
+package games;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class BlizzardTest {
+public class AvalancheTest {
 
     private static int playerHealth = 100;
     private static boolean alive = false;

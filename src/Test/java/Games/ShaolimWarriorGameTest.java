@@ -20,7 +20,7 @@ class ShaolimWarriorGameTest {
 
 
     @Test
-    void checkGameHealth(int playerHealth) {
+    public void checkGameHealth(int playerHealth) {
 
         if(enemyHealth <= 0)
             alive = false;
@@ -33,17 +33,46 @@ class ShaolimWarriorGameTest {
     }
 
     @Test
-    void shaolinWarriorGameStart() {
+    public void shaolinWarriorGameStart() {
     }
 
     @Test
-    void fightTime() {
+    public void fightTime() {
         alive = true;
         //String fight = null;
     }
 
     @Test
-    void playerDecision() {
+    public void enemyDefeat(){
+        // dexterity increase
+        //slight health increase
+    }
+
+    @Test
+    public void playerDecision() {
+        //method for multiple choice
 
     }
+
+    @Test
+    public void pickUpItem(){}
+
+    @Test
+    public void eatDrink(){
+        //eat or drink to restore health
+        //set + health per item
+    }
+
+    @Test
+    public void talk(){
+        //speak to dying or non fighting characters
+        //increase intellect
+    }
+
+    @Test
+    public void winGame(){}
+
+
+
+
 }

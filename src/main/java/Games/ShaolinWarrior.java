@@ -9,7 +9,7 @@ import models.items.Item;
 import models.utility.HeroWarehouse;
 import output.Display;
 
-public class ShaolinWarriorGame {
+public class ShaolinWarrior {
     private int enemyHealth = 80;
     private Enemy badGuy = new Enemy(12345L, "Bolo", "lackey");
     private double enemyMoveChoice = Math.ceil(Math.random() * 3);
@@ -23,7 +23,7 @@ public class ShaolinWarriorGame {
     private boolean inGame = true;
 
 
-    public ShaolinWarriorGame() {
+    public ShaolinWarrior() {
     }
 
     /**
@@ -173,6 +173,4 @@ public class ShaolinWarriorGame {
 
 
 }
-
-
 

@@ -1,8 +1,8 @@
 package engine;
 
-import games.Blizzard;
+import games.Avalanche;
 import games.NinjaTurtles;
-import games.ShaolinWarriorGame;
+import games.ShaolinWarrior;
 import input.ConsoleManager;
 import models.characters.Hero;
 import models.utility.HeroWarehouse;
@@ -13,7 +13,9 @@ public class GameEngine {
     private ConsoleManager gameConsole = new ConsoleManager();
     private HeroWarehouse characterCollection = new HeroWarehouse();
     private Hero playerHero;
-
+    private NinjaTurtles ninjaTurtlesGame = new NinjaTurtles();
+    private ShaolinWarrior shaolinWarriorGame = new ShaolinWarrior();
+    private Avalanche avalanche = new Avalanche();
 
     public void gameStart() {
         gameDisplay.printMessage("Welcome to OHero! This is a lazy demo for a game. \n" +
@@ -40,7 +42,7 @@ public class GameEngine {
     }
 
     public void startingStats() {
-Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
+        Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
         gameDisplay.printMessage("\n" + currentPlayer.getName() + "'s Stats are:");
 
@@ -74,14 +76,14 @@ Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
 
         if (yesOrNoCheck(gameConsole.playerInput())) {
             gameDisplay.printMessage("How inquisitive! Enjoy this +5 Intellect!");
-            characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntel(5);
+            characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntellect(5);
             gameDisplay.printCharacterStats(characterCollection.getCharacterModelStorage().get(0));
             gameDisplay.printMessage("...your bag is still empty though. It contains " +
                     characterCollection.getCharacterModelStorage().get(0).getHeroInventory().getItemStash().size() +
                     "\n items which is just sad. Nothing we can do about it though.");
         } else {
             gameDisplay.printMessage("Not very curious are you?");
-            characterCollection.getCharacterModelStorage().get(0).getStats().decreaseIntel(5);
+            characterCollection.getCharacterModelStorage().get(0).getStats().decreaseIntellect(5);
             gameDisplay.printMessage("Alright, we'll move on.");
         }
     }
@@ -109,15 +111,15 @@ Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
             switch (choice) {
                 case "1":
                     gameDisplay.printMessage("You are now in the sewer!");
-                    NinjaTurtles.start(characterCollection);
+                    ninjaTurtlesGame.start(characterCollection);
                     break;
                 case "2":
                     gameDisplay.printMessage("Look for cover, a blizzard is coming!");
-                    Blizzard.start(characterCollection);
+                    avalanche.start(characterCollection);
                     break;
                 case "3":
                     gameDisplay.printMessage("Welcome to the dojo!");
-                    ShaolinWarriorGame.start(characterCollection);
+                    shaolinWarriorGame.start(characterCollection);
                     break;
                 case "4":
                     gameDisplay.printMessage("Thank you have a nice day");
@@ -125,10 +127,8 @@ Hero currentPlayer = characterCollection.getCharacterModelStorage().get(0);
                 default:
                     gameDisplay.printMessage("Please choose 1, 2, 3, or 4.");
                     break;
-                }
-                choice = gameConsole.playerInput();
             }
+            choice = gameConsole.playerInput();
         }
     }
-
-
+}

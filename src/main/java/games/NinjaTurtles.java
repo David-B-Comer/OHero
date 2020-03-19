@@ -12,21 +12,23 @@ public class NinjaTurtles {
 
     private Display gameDisplay = new Display();
     private ConsoleManager gameConsole = new ConsoleManager();
+// player
     private Hero currentPlayer;
-    private int enemyHealth = 100;
-    private Enemy footClan = new Enemy(1L, "Foot Clan Soldier", "Foot Clan Soldier");
-    private double enemyMoveChoice = Math.ceil(Math.random()*3);
     private String playerName;
-    private int playerHealth;
+// player stats
+    private int playerDexterity = currentPlayer.getStats().getDexterity();
+    private int playerEnergy = currentPlayer.getStats().getEnergy();
+    private int playerStrength = currentPlayer.getStats().getStrength();
+    private int playerIntellect = currentPlayer.getStats().getIntellect();
+    private int playerHealth = currentPlayer.getStats().getHealth();
+// enemy
+    private Enemy footClan = new Enemy(1L, "Foot Clan Soldier", "Foot Clan Soldier");
+    private int enemyHealth = 100;
+    private double enemyMoveChoice = Math.ceil(Math.random()*3);
+
     private boolean alive = false;
-    private int playerIntellect;
-    private int playerEnergy;
 
 
-
-
-//    private int playerHealth = currentPlayer.getStats().getHealth();
-//    private int playerEnergy = currentPlayer.getStats().getEnergy();
 
     public NinjaTurtles() {
     }
@@ -52,16 +54,18 @@ public class NinjaTurtles {
     public void eatPizza(HeroWarehouse characterCollection) {
 
         gameDisplay.printMessage("\nThat pizza hit the spot! Health and energy increased to " + playerHealth + " "+ playerEnergy );
-        gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat more pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
+        gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
         turtlesChoices(characterCollection);
     }
 
     public void trainWithSplinter(HeroWarehouse characterCollection) {
 
-        characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntellect(5);
+        // increase player dexterity and intellect
         characterCollection.getCharacterModelStorage().get(0).getStats().increaseDexterity(5);
-        gameDisplay.printMessage("\nYou have chosen wisely young turtle dexterity and intellect have been improved. Intellect increased to ");
-        gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat more pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
+        characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntellect(5);
+
+        gameDisplay.printMessage("\nYou have chosen wisely young turtle dexterity and intellect have been improved. Intellect increased to " + playerDexterity + " " + playerIntellect);
+        gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
         turtlesChoices(characterCollection);
     }
 
@@ -73,6 +77,10 @@ public class NinjaTurtles {
         gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat more pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
         turtlesChoices(characterCollection);
 
+    }
+
+    public void turtlesNextPrompt(HeroWarehouse characterCollection) {
+        gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat more pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
     }
 
     public void turtlesChoices(HeroWarehouse characterCollection) {

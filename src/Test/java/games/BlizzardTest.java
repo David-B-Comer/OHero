@@ -1,9 +1,7 @@
-package Games;
+package games;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class BlizzardTest {
 

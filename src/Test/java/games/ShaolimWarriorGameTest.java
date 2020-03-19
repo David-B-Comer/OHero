@@ -1,4 +1,4 @@
-package Games;
+package games;
 
 import models.characters.Hero;
 import org.junit.Assert;
@@ -8,7 +8,7 @@ import output.Display;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ShaolimWarriorGameTest {
+class ShaolinWarriorGameTest {
 
 
     private static int enemyHealth = 100;
@@ -24,7 +24,7 @@ class ShaolimWarriorGameTest {
 
         if(enemyHealth <= 0)
             alive = false;
-        else if (ShaolimWarriorGameTest.playerHealth <= 0)
+        else if (ShaolinWarriorGameTest.playerHealth <= 0)
             alive = false;
 
         checkGameHealth(playerHealth);

@@ -1,8 +1,6 @@
-package Games;
+package games;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class NinjaTurtlesTest {
 

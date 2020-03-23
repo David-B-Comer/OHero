@@ -163,6 +163,7 @@ public class ShaolinWarrior {
                         "They are aware that you might be coming. You must practice stealth!");
             } else if (playerFightChoice.equals("b"))
                 gameDisplay.printMessage("You rush into a room full of soldiers. This choice might have been rash!");
+                gameOver();
             break;
         }
         }

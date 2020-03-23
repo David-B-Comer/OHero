@@ -23,6 +23,7 @@ public class ShaolinWarrior {
 
 
     public ShaolinWarrior() {
+
     }
 
     /**
@@ -35,6 +36,7 @@ public class ShaolinWarrior {
         if (enemyHealth <= 0) {
             gameDisplay.printMessage("Your training was tested and you chi is strong, " + playerName + " you have defeated " + badGuy.getName() + ".\n" + "This battle is over but there are more who must answer for your masters betrayal ");
             alive = false;
+            pickUpScroll();
         } else if (playerHealth <= 0) {
             gameDisplay.printMessage(playerName + " ,you have failed your master. " + badGuy.getName() + "'s chi was stronger. Master Huang betrayal will not be avenged by you.");
             alive = false;
@@ -59,10 +61,7 @@ public class ShaolinWarrior {
                     "You have traveled to Kāimíng to exact your revenge for the the honor of your master \n" +
                     "You enter the enemy's dojo. " + badGuy.getName() + " is knealing in meditation. \n" +
                     "He raises his head. You lock eyes and he rises to fight you.");
-        gameDisplay.printMessage("What would you like to do? (a)punch (b)kick (c)knee strike: ");
            fight();
-
-
     }
 
     public void fight() {
@@ -148,9 +147,6 @@ public class ShaolinWarrior {
 
         }
     }
-        if(enemyHealth <= 0){
-            pickUpScroll();
-        }
 }
         /**
          * If player survives first fight
@@ -180,8 +176,9 @@ public class ShaolinWarrior {
         gameDisplay.printMessage("Game Over");
         System.exit(0);
         inGame = false;
-
     }
+
+
 
 
 }

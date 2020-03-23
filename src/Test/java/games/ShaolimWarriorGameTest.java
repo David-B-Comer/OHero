@@ -20,14 +20,12 @@ class ShaolinWarriorGameTest {
 
 
     @Test
-    public void checkGameHealth(int playerHealth) {
+    public void checkGameHealth() {
+        Integer expected = playerHealth = 100;
+        Integer actual ;
 
-        if(enemyHealth <= 0)
-            alive = false;
-        else if (ShaolinWarriorGameTest.playerHealth <= 0)
-            alive = false;
 
-        checkGameHealth(playerHealth);
+
 
 
     }
@@ -71,6 +69,11 @@ class ShaolinWarriorGameTest {
 
     @Test
     public void winGame(){}
+
+    @Test
+    public void gameOver(){
+
+    }
 
 
 

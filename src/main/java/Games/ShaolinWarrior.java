@@ -161,11 +161,39 @@ public class ShaolinWarrior {
                 gameDisplay.printMessage("It is a message from Wang Shichong. \n" +
                         "It's a warning to his clan that retribution may be sought for the death of your master Huang. \n" +
                         "They are aware that you might be coming. You must practice stealth!");
+                goingToSideOfDojo();
             } else if (playerFightChoice.equals("b"))
                 gameDisplay.printMessage("You rush into a room full of soldiers. This choice might have been rash!");
                 gameOver();
             break;
         }
+        }
+
+        public void goingToSideOfDojo(){
+            while ((inGame)) {
+                gameDisplay.printMessage("You approach the door slowly. You hear faint talking on the other side. \n" +
+                        "You place your ear to the door. Your hear what seems to be many people  raucously eating together");
+                gameDisplay.printMessage("a)To go through the door b)To go back outside");
+
+                String playerFightChoice = gameConsole.playerInput();
+                if(playerFightChoice.equals("a")){
+                    gameDisplay.printMessage("You rush into a room full of soldiers. This choice might have been rash!");
+                    gameOver();
+                }else if(playerFightChoice.equals("b"))
+                    gameDisplay.printMessage("You slip back out of the dojo entrance. Going around the side of,\n" +
+                            "You notice a small door at the base of the dojo.");
+                    goingUnderground();
+                break;
+            }
+        }
+
+        public void goingUnderground(){
+            while (inGame){
+                gameDisplay.printMessage("You quietly slip through the door. The room is full of casks of rice wine and bags of millet. \n" +
+                        "It seems you have found the cellar, " + playerName + ". It would be foolhardy to try to attack the numbers here right now. \n" +
+                        "It would be smarter and wait until nightfall for more stealth.");
+                break;
+            }
         }
 
     /**

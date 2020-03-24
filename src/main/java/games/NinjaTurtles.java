@@ -4,7 +4,6 @@ import input.ConsoleManager;
 import models.characters.Enemy;
 import models.characters.Hero;
 import models.utility.HeroWarehouse;
-import models.utility.Stats;
 import output.Display;
 
 
@@ -22,13 +21,15 @@ public class NinjaTurtles {
     private int playerIntellect;
     private int playerHealth;
     // enemy
-    private Enemy footClan = new Enemy(1L, "Foot Clan Soldier", "Foot Clan Soldier");
+    private String enemyName;
+    private Enemy footClan = new Enemy(1L, "Foot Clan Soldier", "Soldier");
+    private Enemy bebop = new Enemy(2L, "Bebop", "Boss");
+    private Enemy rockSteady = new Enemy(3L, "Rock Steady", "Boss");
+    private Enemy shredder = new Enemy(4L, "Shredder", "Master");
     private int enemyHealth = 100;
-    private double enemyMoveChoice = Math.ceil(Math.random()*3);
-
+    private double enemyChoice = Math.ceil(Math.random() * 3);
     private boolean alive = false;
     private boolean inGame = true;
-
 
 
     public NinjaTurtles() {
@@ -40,32 +41,35 @@ public class NinjaTurtles {
             gameDisplay.printMessage("You kicked some bad guy butt!");
             alive = false;
         } else if (playerHealth <= 0) {
-            gameDisplay.printMessage("Looks like you needed some more training to defeat " + footClan);
+            gameDisplay.printMessage("Looks like you needed some more training to defeat " + enemyName);
             alive = false;
             gameOver();
         }
+    }
+
+    private void gameOver() {
+        gameDisplay.printMessage("Game Over");
+        System.exit(0);
+        inGame = false;
+
     }
 
     public void start(HeroWarehouse characterCollection) {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
         playerName = currentPlayer.getName();
         playerHealth = currentPlayer.getStats().getHealth();
-
-
-
         alive = true;
-        while (inGame) {
 
-            gameDisplay.printMessage("\nHeroes in a half shell. Turtle Power!");
-            turtlesNextPrompt(characterCollection);
-            turtlesChoices(characterCollection);
-        }
+        gameDisplay.printMessage("\nHeroes in a half shell. Turtle Power!");
+        turtlesNextPrompt(characterCollection);
+        turtlesChoices(characterCollection);
+
     }
 
     public void eatPizza(HeroWarehouse characterCollection) {
 
-        playerHealth = characterCollection.getCharacterModelStorage().get(0).getStats().increaseHealth(5);
-        playerEnergy = characterCollection.getCharacterModelStorage().get(0).getStats().increaseEnergy(5);
+        playerHealth = currentPlayer.getStats().increaseHealth(5);
+        playerEnergy = currentPlayer.getStats().increaseEnergy(5);
 
         gameDisplay.printMessage("\nThat pizza hit the spot! Health and energy increased to " + playerHealth + " "+ playerEnergy );
         turtlesNextPrompt(characterCollection);
@@ -75,9 +79,8 @@ public class NinjaTurtles {
     public void trainWithSplinter(HeroWarehouse characterCollection) {
 
         // increase player dexterity and intellect
-
-        playerDexterity = characterCollection.getCharacterModelStorage().get(0).getStats().increaseDexterity(5);
-        playerIntellect = characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntellect(5);
+        playerDexterity = currentPlayer.getStats().increaseDexterity(5);
+        playerIntellect = currentPlayer.getStats().increaseIntellect(5);
 
 
         gameDisplay.printMessage("\nYou have chosen wisely young turtle dexterity and intellect have been improved. Intellect increased to " + playerDexterity + " " + playerIntellect);
@@ -88,18 +91,135 @@ public class NinjaTurtles {
 
 
     public void fightFootClan(HeroWarehouse characterCollection) {
+// if win
+        playerStrength = currentPlayer.getStats().increaseStrength(5);
+        playerEnergy = currentPlayer.getStats().increaseEnergy(5);
+// if lose
+        playerStrength = currentPlayer.getStats().increaseStrength(5);
+        playerEnergy = currentPlayer.getStats().increaseEnergy(5);
 
-        playerStrength = characterCollection.getCharacterModelStorage().get(0).getStats().increaseStrength(5);
-        playerEnergy = characterCollection.getCharacterModelStorage().get(0).getStats().decreaseEnergy(5);
 
-        gameDisplay.printMessage("\n Strength increased, energy decreased " + playerStrength + " " + playerEnergy);
+        gameDisplay.printMessage("\n Looks like we are in for a fight. Strength has been increased, energy decreased " + playerStrength + " " + playerEnergy);
+
         turtlesNextPrompt(characterCollection);
         turtlesChoices(characterCollection);
+        checkGameHealth();
 
     }
 
+    public void fightBoss(HeroWarehouse characterCollection) {
+
+        playerStrength = currentPlayer.getStats().increaseStrength(5);
+        playerEnergy = currentPlayer.getStats().decreaseEnergy(5);
+
+        gameDisplay.printMessage("\n Looks like we are in for a fight. Strength has been increased, energy decreased " + playerStrength + " " + playerEnergy);
+        turtlesNextPrompt(characterCollection);
+        turtlesChoices(characterCollection);
+        checkGameHealth();
+
+
+    }
+
+    public void fightShredder(HeroWarehouse characterCollection) {
+
+        alive = true;
+        while (inGame) {
+
+            gameDisplay.printMessage(shredder.getName() + " has " + enemyHealth + " health remaining.");
+            gameDisplay.printMessage(playerName + " has " + playerHealth + " health remaining.");
+
+            gameDisplay.printMessage("What would you like to do? (a)punch (b)kick (c)special attack: ");
+            String playerFightChoice = gameConsole.playerInput();
+
+
+
+            switch (playerFightChoice) {
+                case "a":
+                    fightPunchOptions();
+                    checkGameHealth();
+                    break;
+                case "b":
+                    fightKickOptions();
+                    checkGameHealth();
+                    break;
+                case "c":
+                    fightSpecialAttackOptions();
+                    checkGameHealth();
+                    break;
+
+            }
+        }
+    }
+
+    public void fightPunchOptions() {
+
+        switch ((int) enemyChoice) {
+            case 1:
+                gameDisplay.printMessage(shredder.getName() + " side steps your punch." + shredder.getName() + " is faster than you thought");
+                checkGameHealth();
+                break;
+            case 2:
+                gameDisplay.printMessage(playerName + " lands a solid punch to " + shredder.getName() + "'s ribs.");
+                enemyHealth -= 10;
+                checkGameHealth();
+                break;
+            case 3:
+                gameDisplay.printMessage(shredder.getName() + " sidesteps and counters with kick into " + playerName + ".");
+                playerHealth -= 10;
+                checkGameHealth();
+                break;
+        }
+    }
+
+    public void fightKickOptions() {
+
+        switch ((int) enemyChoice) {
+            case 1:
+                gameDisplay.printMessage(shredder.getName() + " dances by kick.");
+                checkGameHealth();
+                break;
+            case 2:
+                gameDisplay.printMessage(playerName + " your kick doubles " + shredder.getName() + " over.");
+                enemyHealth -= 10;
+                checkGameHealth();
+                break;
+            case 3:
+                gameDisplay.printMessage(shredder.getName() + " jumps back from your kick. And counters with a punch to " + playerName + "'s ribs.'");
+                playerHealth -= 10;
+                checkGameHealth();
+                break;
+        }
+
+    }
+
+    public void fightSpecialAttackOptions() {
+
+        switch ((int) enemyChoice) {
+            case 1:
+                gameDisplay.printMessage(shredder.getName() + " laughs at your missed knee attack.");
+                checkGameHealth();
+                break;
+            case 2:
+                gameDisplay.printMessage(playerName + " your knee doubles " + shredder.getName() + " over.");
+                enemyHealth -= 10;
+                checkGameHealth();
+                break;
+            case 3:
+                gameDisplay.printMessage(shredder.getName() + " evades your knee and lands a glancing blow to your face.");
+                playerHealth -= 10;
+                checkGameHealth();
+                break;
+            default:
+                gameDisplay.printMessage("PLEASE ENTER a, b, OR c");
+                break;
+        }
+    }
+
+
+
+
     public void turtlesNextPrompt(HeroWarehouse characterCollection) {
-        gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat more pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
+        gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
     }
 
     public void turtlesChoices(HeroWarehouse characterCollection) {
@@ -117,18 +237,11 @@ public class NinjaTurtles {
                 break;
             case 3:
                 gameDisplay.printMessage("Cowabunga Dudes! Lets kick some bad guy butt!");
-                fightFootClan(characterCollection);
+                fightShredder(characterCollection);
                 break;
             default:
                 gameDisplay.printMessage("PLEASE ENTER 1, 2, OR 3");
                 break;
         }
     }
-    private void gameOver() {
-        gameDisplay.printMessage("Game Over");
-        System.exit(0);
-        inGame = false;
-
-    }
-
 }

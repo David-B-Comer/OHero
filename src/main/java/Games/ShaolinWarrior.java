@@ -77,7 +77,7 @@ public class ShaolinWarrior {
         gameDisplay.printMessage(playerName + " has " + playerHealth + " health remaining.");
 
         gameDisplay.printMessage("What would you like to do? (a)punch (b)kick (c)knee strike: ");
-        String playerFightChoice = gameConsole.playerInput();
+        String playerChoice = gameConsole.playerInput();
 
         double enemyChoice = Math.ceil(Math.random() * 3);
         checkGameHealth();
@@ -87,7 +87,7 @@ public class ShaolinWarrior {
          * create nine different occurrences of responses
          */
 
-        switch (playerFightChoice) {
+        switch (playerChoice) {
             case "a":
                 switch ((int) enemyChoice) {
                     case 1:
@@ -159,8 +159,8 @@ public class ShaolinWarrior {
         while (inGame) {
             gameDisplay.printMessage("There is a scroll on the ground. Do you want; a) to pick it up or b) go to the next room");
 
-            String playerFightChoice = gameConsole.playerInput();
-            if (playerFightChoice.equals("a")) {
+            String playerChoice = gameConsole.playerInput();
+            if (playerChoice.equals("a")) {
 
                 characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntellect(15);
                 gameDisplay.printMessage("It is a message from Wang Shichong. \n" +
@@ -168,7 +168,7 @@ public class ShaolinWarrior {
                         "They are aware that you might be coming. You must practice stealth!");
                 gameDisplay.printMessage("Picking up the scroll has increased your intellect to " + playerIntellect + ".");
                 goingToSideOfDojo();
-            } else if (playerFightChoice.equals("b"))
+            } else if (playerChoice.equals("b"))
                 gameDisplay.printMessage("You rush into a room full of soldiers. This choice might have been rash!");
                 gameOver();
             break;
@@ -181,11 +181,11 @@ public class ShaolinWarrior {
                         "You place your ear to the door. Your hear what seems to be many people  raucously eating together");
                 gameDisplay.printMessage("a)To go through the door b)To go back outside");
 
-                String playerFightChoice = gameConsole.playerInput();
-                if(playerFightChoice.equals("a")){
+                String playerChoice = gameConsole.playerInput();
+                if(playerChoice.equals("a")){
                     gameDisplay.printMessage("You rush into a room full of soldiers. This choice might have been rash!");
                     gameOver();
-                }else if(playerFightChoice.equals("b"))
+                }else if(playerChoice.equals("b"))
                     characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntellect(5);
                     gameDisplay.printMessage("You slip back out of the dojo entrance. Going around the side of,\n" +
                             "You notice a small door at the base of the dojo.");
@@ -202,7 +202,25 @@ public class ShaolinWarrior {
                         "It seems you have found the cellar, " + playerName + ". It would be foolhardy to try to attack the numbers here right now. \n" +
                         "It would be smarter and wait until nightfall for more stealth.");
                 gameDisplay.printMessage("This rest will do you well. Your health has increased to " + playerHealth + ".");
+                hearingSomeoneEnter();
                 break;
+            }
+        }
+
+        public void hearingSomeoneEnter(){
+            while(inGame) {
+                gameDisplay.printMessage("Just after nightfall you hear someone coming down to the cellar.");
+                gameDisplay.printMessage("a) To attack the person. b) To hide behind the casks of wine");
+
+                String playerChoice = gameConsole.playerInput();
+                if(playerChoice.equals("a")){
+                    gameDisplay.printMessage("As soon as you hear the person reach the bottom of the stairs, you strike with a kick. \n" +
+                            "The person collapses immediately from the impact. You get closer to see if the person still conscious. Shame fills you. \n" +
+                            "You have knocked out a little girl.");
+                }else if(playerChoice.equals("b"))
+                    gameDisplay.printMessage("From behind the barrels you see a young girl in tattered clothes. She is weakly scooping millet \n " +
+                            "from one of the bags into a basket");
+                    break;
             }
         }
 

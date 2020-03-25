@@ -21,6 +21,7 @@ public class ShaolinWarrior {
     private boolean inGame = true;
     private int playerDex;
     private HeroWarehouse characterCollection;
+    private int playerIntellect;
 
 
     public ShaolinWarrior() {
@@ -54,6 +55,7 @@ public class ShaolinWarrior {
             currentPlayer = characterCollection.getCharacterModelStorage().get(0);
             playerName = currentPlayer.getName();
             playerHealth = currentPlayer.getStats().getHealth();
+            playerIntellect = currentPlayer.getStats().getIntellect();
             alive = true;
             inGame = true;
             gameDisplay.printMessage("There has been a travesty at the Shoalin monastery. \n" +
@@ -164,6 +166,7 @@ public class ShaolinWarrior {
                 gameDisplay.printMessage("It is a message from Wang Shichong. \n" +
                         "It's a warning to his clan that retribution may be sought for the death of your master Huang. \n" +
                         "They are aware that you might be coming. You must practice stealth!");
+                gameDisplay.printMessage("Picking up the scroll has increased your intellect to " + playerIntellect + ".");
                 goingToSideOfDojo();
             } else if (playerFightChoice.equals("b"))
                 gameDisplay.printMessage("You rush into a room full of soldiers. This choice might have been rash!");
@@ -186,6 +189,7 @@ public class ShaolinWarrior {
                     characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntellect(5);
                     gameDisplay.printMessage("You slip back out of the dojo entrance. Going around the side of,\n" +
                             "You notice a small door at the base of the dojo.");
+                gameDisplay.printMessage("Going outside has increased your intellect to " + playerIntellect + ".");
                     goingUnderground();
                 break;
             }
@@ -197,6 +201,7 @@ public class ShaolinWarrior {
                 gameDisplay.printMessage("You quietly slip through the door. The room is full of casks of rice wine and bags of millet. \n" +
                         "It seems you have found the cellar, " + playerName + ". It would be foolhardy to try to attack the numbers here right now. \n" +
                         "It would be smarter and wait until nightfall for more stealth.");
+                gameDisplay.printMessage("This rest will do you well. Your health has increased to " + playerHealth + ".");
                 break;
             }
         }

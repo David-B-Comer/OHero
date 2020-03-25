@@ -20,6 +20,7 @@ public class ShaolinWarrior {
     private Hero currentPlayer;
     private boolean inGame = true;
     private int playerDex;
+    private HeroWarehouse characterCollection;
 
 
     public ShaolinWarrior() {
@@ -158,6 +159,8 @@ public class ShaolinWarrior {
 
             String playerFightChoice = gameConsole.playerInput();
             if (playerFightChoice.equals("a")) {
+
+                characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntellect(15);
                 gameDisplay.printMessage("It is a message from Wang Shichong. \n" +
                         "It's a warning to his clan that retribution may be sought for the death of your master Huang. \n" +
                         "They are aware that you might be coming. You must practice stealth!");
@@ -180,6 +183,7 @@ public class ShaolinWarrior {
                     gameDisplay.printMessage("You rush into a room full of soldiers. This choice might have been rash!");
                     gameOver();
                 }else if(playerFightChoice.equals("b"))
+                    characterCollection.getCharacterModelStorage().get(0).getStats().increaseIntellect(5);
                     gameDisplay.printMessage("You slip back out of the dojo entrance. Going around the side of,\n" +
                             "You notice a small door at the base of the dojo.");
                     goingUnderground();
@@ -189,6 +193,7 @@ public class ShaolinWarrior {
 
         public void goingUnderground(){
             while (inGame){
+                characterCollection.getCharacterModelStorage().get(0).getStats().increaseHealth(25);
                 gameDisplay.printMessage("You quietly slip through the door. The room is full of casks of rice wine and bags of millet. \n" +
                         "It seems you have found the cellar, " + playerName + ". It would be foolhardy to try to attack the numbers here right now. \n" +
                         "It would be smarter and wait until nightfall for more stealth.");

@@ -220,10 +220,30 @@ public class ShaolinWarrior {
                 }else if(playerChoice.equals("b"))
                     gameDisplay.printMessage("From behind the barrels you see a young girl in tattered clothes. She is weakly scooping millet \n " +
                             "from one of the bags into a basket");
+                    talkToGirl();
                     break;
             }
         }
 
+        public void talkToGirl(){
+            while (inGame) {
+                gameDisplay.printMessage("a) To talk to girl  b) To keep hiding");
+                String playerChoice = gameConsole.playerInput();
+                if (playerChoice.equals("a")) {
+                    gameDisplay.printMessage("You whisper from the shadows that you mean her no harm. The little girl turns around shocked. \n" +
+                            "You walk from behind the casks of rice wine. With you hands raised you tell her your name is " + playerName + " and why you \n" +
+                            "you are there. She says, 'My name is HUIAN. '  ");
+                    huianTale();
+                } else if (playerChoice.equals("b"))
+                    gameDisplay.printMessage("The child works with the millet for a scant few minutes and scurrys off.");
+                    ventureUpTheStairs();
+            }
+
+        }
+
+        public void huianTale(){}
+
+        public void ventureUpTheStairs(){}
     /**
      * made to stop game upon player death
      * added to check health method

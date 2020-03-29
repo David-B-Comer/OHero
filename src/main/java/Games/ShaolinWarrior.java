@@ -232,7 +232,7 @@ public class ShaolinWarrior {
                 if (playerChoice.equals("a")) {
                     gameDisplay.printMessage("You whisper from the shadows that you mean her no harm. The little girl turns around shocked. \n" +
                             "You walk from behind the casks of rice wine. With you hands raised you tell her your name is " + playerName + " and why you \n" +
-                            "you are there. She says, 'My name is HUIAN. '  ");
+                            "you are there. She says, 'My name is Huian. '  ");
                     huianTale();
                 } else if (playerChoice.equals("b"))
                     gameDisplay.printMessage("The child works with the millet for a scant few minutes and scurrys off.");
@@ -241,7 +241,15 @@ public class ShaolinWarrior {
 
         }
 
-        public void huianTale(){}
+        public void huianTale(){
+            while (inGame) {
+                gameDisplay.printMessage("Huian tells you that her mother, sister and she were bought here by vassals of Wang Shichong.\n" +
+                        "There was a raid on her village, and Shichong's solders destroyed their home.  Huian hasn't seen her mother in months. The men here \n" +
+                        "have treated her and her older sister harshly. ");
+                gameDisplay.printMessage("You promise Huian that those men will pay for the travesties that were brought to her family.\n"+
+                        "Huian says she can help. She knows were Shichong's apartments are in the fortress and can show you.");
+            }
+        }
 
         public void ventureUpTheStairs(){}
     /**

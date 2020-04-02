@@ -40,11 +40,18 @@ public class NinjaTurtles {
         if (enemyHealth <= 0) {
             gameDisplay.printMessage("You kicked some bad guy butt!");
             alive = false;
+            winGame();
         } else if (playerHealth <= 0) {
             gameDisplay.printMessage("Looks like you needed some more training to defeat " + enemyName);
             alive = false;
             gameOver();
         }
+    }
+
+    private void winGame() {
+        gameDisplay.printMessage("You Won!");
+        System.exit(0);
+        inGame = false;
     }
 
     private void gameOver() {

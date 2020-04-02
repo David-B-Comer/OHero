@@ -8,6 +8,7 @@ public class NinjaTurtlesTest {
     public void startGameTest() {
         //test new game
 
+
     }
 
     @Test
@@ -23,26 +24,26 @@ public class NinjaTurtlesTest {
     }
 
     @Test
-    public void enemySustainDamage() {
+    public void enemySustainDamageTest() {
         // decrease enemy health
 
     }
 
     @Test
-    public void enemySustainMassiveDamage() {
+    public void enemySustainMassiveDamageTest() {
         // decrease enemy health
         // print major league butt kicking is back in town
 
     }
 
     @Test
-    public void sustainDamage() {
+    public void sustainDamageTest() {
         // decrease health
 
     }
 
     @Test
-    public void sustainMassiveDamage() {
+    public void sustainMassiveDamageTest() {
         // decrease health
         // print shell shocked
 
@@ -55,7 +56,7 @@ public class NinjaTurtlesTest {
     }
 
     @Test
-    public void abandonFight() {
+    public void abandonFightTest() {
         // run away to fight another day
 
     }
@@ -101,7 +102,7 @@ public class NinjaTurtlesTest {
     }
 
     @Test
-    public void winGame() {
+    public void winGameTest() {
         // defeated all enemies and saved the city
         // pizza party
 

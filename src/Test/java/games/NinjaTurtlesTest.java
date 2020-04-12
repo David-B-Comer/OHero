@@ -1,11 +1,26 @@
 package games;
 
+import models.characters.Hero;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class NinjaTurtlesTest {
 
     @Test
-    public void startGameTest() {
+    public void increaseHealthTest() {
+
+//        Hero hero = new Hero("hero",null);
+//
+//        Integer expected = 10;
+//
+//        hero.Stats.increaseHealth(10);
+//        Integer actual = hero.Stats.getHealth();
+//
+//        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void playGameTest() {
         //test new game
 
 

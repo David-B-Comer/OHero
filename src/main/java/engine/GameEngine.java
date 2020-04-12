@@ -111,7 +111,7 @@ public class GameEngine {
             switch (choice) {
                 case "1":
                     gameDisplay.printMessage("You are now in the sewer!");
-                    ninjaTurtlesGame.start(characterCollection);
+                    ninjaTurtlesGame.playGame(characterCollection);
                     break;
                 case "2":
                     gameDisplay.printMessage("Look for cover, a blizzard is coming!");

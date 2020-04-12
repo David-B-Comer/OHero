@@ -48,6 +48,7 @@ public class NinjaTurtles {
         }
     }
 
+
     private void winGame() {
         gameDisplay.printMessage("You Won!");
         System.exit(0);
@@ -61,7 +62,7 @@ public class NinjaTurtles {
 
     }
 
-    public void start(HeroWarehouse characterCollection) {
+    public void playGame(HeroWarehouse characterCollection) {
         currentPlayer = characterCollection.getCharacterModelStorage().get(0);
         playerName = currentPlayer.getName();
         playerHealth = currentPlayer.getStats().getHealth();
@@ -78,6 +79,7 @@ public class NinjaTurtles {
         playerHealth = currentPlayer.getStats().increaseHealth(5);
         playerEnergy = currentPlayer.getStats().increaseEnergy(5);
 
+        gameDisplay.printMessage("Pizza with no anchovies. If you put anchovies on it you're in big trouble.");
         gameDisplay.printMessage("\nThat pizza hit the spot! Health and energy increased to " + playerHealth + " "+ playerEnergy );
         turtlesNextPrompt(characterCollection);
         turtlesChoices(characterCollection);
@@ -135,21 +137,21 @@ public class NinjaTurtles {
             gameDisplay.printMessage(shredder.getName() + " has " + enemyHealth + " health remaining.");
             gameDisplay.printMessage(playerName + " has " + playerHealth + " health remaining.");
 
-            gameDisplay.printMessage("What would you like to do? (a)punch (b)kick (c)special attack: ");
+            gameDisplay.printMessage("What would you like to do? (1)punch (2)kick (3)special attack: ");
             String playerFightChoice = gameConsole.playerInput();
 
 
 
             switch (playerFightChoice) {
-                case "a":
+                case "1":
                     fightPunchOptions();
                     checkGameHealth();
                     break;
-                case "b":
+                case "2":
                     fightKickOptions();
                     checkGameHealth();
                     break;
-                case "c":
+                case "3":
                     fightSpecialAttackOptions();
                     checkGameHealth();
                     break;
@@ -226,7 +228,7 @@ public class NinjaTurtles {
 
 
     public void turtlesNextPrompt(HeroWarehouse characterCollection) {
-        gameDisplay.printMessage("What did you want to do next.\nEnter 1 to Eat pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
+        gameDisplay.printMessage("What did you want to do next?\nEnter 1 to Eat pizza: 2 to Train with Master Splinter: 3 to begin your hunt for Shredder.");
     }
 
     public void turtlesChoices(HeroWarehouse characterCollection) {

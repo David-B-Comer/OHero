@@ -27,7 +27,7 @@ public class NinjaTurtles {
     private Enemy rockSteady = new Enemy(3L, "Rock Steady", "Boss");
     private Enemy shredder = new Enemy(4L, "Shredder", "Master");
     private int enemyHealth = 100;
-    private double enemyChoice = Math.ceil(Math.random() * 3);
+
     private boolean alive = false;
     private boolean inGame = true;
 
@@ -155,72 +155,66 @@ public class NinjaTurtles {
                     fightSpecialAttackOptions();
                     checkGameHealth();
                     break;
+                default:
+                    gameDisplay.printMessage("PLEASE ENTER 1, 2, OR 3");
+                    break;
 
             }
         }
     }
 
     public void fightPunchOptions() {
+        int enemyChoice = (int)(Math.random() * 3);
 
         switch ((int) enemyChoice) {
             case 1:
                 gameDisplay.printMessage(shredder.getName() + " side steps your punch." + shredder.getName() + " is faster than you thought");
-                checkGameHealth();
                 break;
             case 2:
                 gameDisplay.printMessage(playerName + " lands a solid punch to " + shredder.getName() + "'s ribs.");
                 enemyHealth -= 10;
-                checkGameHealth();
                 break;
             case 3:
                 gameDisplay.printMessage(shredder.getName() + " sidesteps and counters with kick into " + playerName + ".");
                 playerHealth -= 10;
-                checkGameHealth();
                 break;
         }
     }
 
     public void fightKickOptions() {
-
+        int enemyChoice = (int)(Math.random() * 3);
         switch ((int) enemyChoice) {
             case 1:
                 gameDisplay.printMessage(shredder.getName() + " dances by kick.");
-                checkGameHealth();
                 break;
             case 2:
                 gameDisplay.printMessage(playerName + " your kick doubles " + shredder.getName() + " over.");
                 enemyHealth -= 10;
-                checkGameHealth();
                 break;
             case 3:
                 gameDisplay.printMessage(shredder.getName() + " jumps back from your kick. And counters with a punch to " + playerName + "'s ribs.'");
                 playerHealth -= 10;
-                checkGameHealth();
                 break;
+
         }
 
     }
 
     public void fightSpecialAttackOptions() {
-
+        int enemyChoice = (int)(Math.random() * 3);
         switch ((int) enemyChoice) {
             case 1:
                 gameDisplay.printMessage(shredder.getName() + " laughs at your missed knee attack.");
-                checkGameHealth();
                 break;
             case 2:
                 gameDisplay.printMessage(playerName + " your knee doubles " + shredder.getName() + " over.");
                 enemyHealth -= 10;
-                checkGameHealth();
                 break;
             case 3:
                 gameDisplay.printMessage(shredder.getName() + " evades your knee and lands a glancing blow to your face.");
                 playerHealth -= 10;
-                checkGameHealth();
                 break;
-            default:
-                gameDisplay.printMessage("PLEASE ENTER a, b, OR c");
-                break;
+
         }
     }
 
